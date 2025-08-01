@@ -1,0 +1,9 @@
+
+ php artisan tinker
+ 
+DB::table('modulos')->insert([
+    ['codmf' => 'MP0391', 'denominacion' => 'Programación Web en el Entorno Cliente', 'horas' => 80],
+    ['codmf' => 'MF0491_3', 'denominacion' => 'Programación Web en el Entorno Servidor', 'horas' => 180],
+    ['codmf' => 'MP0421', 'denominacion' => 'Desarrollo de Aplicaciones Web', 'horas' => 120],
+    ['codmf' => 'MF0521', 'denominacion' => 'Diseño de Interfaces Web', 'horas' => 100],
+]);
