@@ -155,6 +155,11 @@ p {
 .header .close-menu {
     display: none;
 }
+
+.sapnTanano {
+    font-size: 12px;
+    color: #a4a1a7;
+}
 /* ------------- querys menu -------------------------------- */
 @media (max-width: 768px) {
     .header .menu {
@@ -266,7 +271,7 @@ p {
 
 .welcome {
     color: darkgreen;
-    margin-top: 70px;
+    margin-top: 10px;
     font-size: 40px;
     font-family: Arial;
     font-weight: bold;

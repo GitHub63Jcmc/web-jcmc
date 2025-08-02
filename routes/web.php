@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormacionController;
 use App\Http\Controllers\PortafolioController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactoMailable;
 use Illuminate\Http\Request;
 
 
@@ -38,7 +40,14 @@ Route::post('/contacto/enviar', function (Request $request) {
         'mensaje' => 'required|string',
     ]);
 
-    // Aquí podrías enviar un correo o guardar en la base de datos (más adelante)
+    // Envía el correo a tu dirección
+    Mail::to('jcmcgoojcmc@gmail.com')->send(
+        new ContactoMailable(
+            $validated['nombre'],
+            $validated['email'],
+            $validated['mensaje']
+        )
+    );
 
     return back()->with('success', 'Mensaje enviado correctamente.');
 })->name('contacto.enviar');

@@ -14,10 +14,12 @@
 <div class="container-fluid m-auto hero">
     <div class="hero-inner">
         <div class="hero-text">
-        <h1 class="welcome">WELCOME CONTACTO</h1>
-            <h6 class="colorTexto">Desarrollador Web en formación con 3 años de experiencia, práctica en el desarrollo de sitios web y aplicaciones a través de proyectos personales y cursos especializados. Habilidad en tecnologías como HTML5, CSS3, JavaScript, y PHP, con conocimientos en WordPress, bases de datos (MySQL) y el uso de frameworks modernos como Bootstrap. Motivado para seguir aprendiendo y aplicando nuevas tecnologías, y con experiencia previa en la gestión de proyectos y atención al detalle, adquirida durante una extensa carrera en estos últimos años.
-            </h6>
+            <h1 class="welcome">WELCOME CONTACTO</h1>
+            <div>
+                <h3 class="text-center mt-0">¿Tomamos un café virtual y hablamos? <br><hr><span class="sapnTanano">Estoy abierto a colaborar, responder dudas, compartir ideas o ayudarte con tu proyecto.</span></h3>
+            </div>
         </div>
+
         <div class="hero-image m-1">
             <picture>
                 <source srcset="{{ asset('img/hero_setup.avif') }}" alt="Imagen Inicio">
@@ -31,9 +33,20 @@
 <div class="container my-5">
     <h2 class="text-center mb-4 colorTexto">Contáctame</h2>
     @if(session('success'))
-        <div class="alert alert-success">
+        <div id="alerta-exito" class="alert alert-success">
             {{ session('success') }}
         </div>
+
+        <script>
+            setTimeout(() => {
+                const alerta = document.getElementById('alerta-exito');
+                if (alerta) {
+                    alerta.style.transition = 'opacity 1s ease-out';
+                    alerta.style.opacity = '0';
+                    setTimeout(() => alerta.remove(), 1000);
+                }
+            }, 15000); // 15 segundos
+        </script>
     @endif
 
     <form method="POST" action="{{ route('contacto.enviar') }}">
