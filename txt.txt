@@ -7,3 +7,33 @@ DB::table('modulos')->insert([
     ['codmf' => 'MP0421', 'denominacion' => 'Desarrollo de Aplicaciones Web', 'horas' => 120],
     ['codmf' => 'MF0521', 'denominacion' => 'Diseño de Interfaces Web', 'horas' => 100],
 ]);
+
+-------------------- Arrancar -----------------------
+
+jcmcg@Jcmc63cmcJ MINGW64 /d/xampp/htdocs/web-jcmc (main)
+$ /d/xampp/php/php.exe artisan serve
+
+   INFO  Server running on [http://127.0.0.1:8000].  
+
+  Press Ctrl+C to stop the server
+
+  ----------------------------------- y ----------------------------
+  jcmcg@Jcmc63cmcJ MINGW64 /d/xampp/htdocs/web-jcmc (main)
+$ npm run dev
+
+> dev
+> vite
+
+
+
+  VITE v6.2.0  ready in 473 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+  LARAVEL v12.0.1  plugin v1.2.0
+
+  ➜  APP_URL: http://localhost
+
+  
