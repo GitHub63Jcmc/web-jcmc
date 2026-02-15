@@ -11,7 +11,7 @@ DB::table('modulos')->insert([
 -------------------- Arrancar -----------------------
 
 jcmcg@Jcmc63cmcJ MINGW64 /d/xampp/htdocs/web-jcmc (main)
-$ /d/xampp/php/php.exe artisan serve
+$ /d/xampp/php/php.exe php artisan serve
 
    INFO  Server running on [http://127.0.0.1:8000].  
 
@@ -36,4 +36,5 @@ $ npm run dev
 
   ➜  APP_URL: http://localhost
 
-  
+  ---------------------------------------------------------
+  http://localhost/phpmyadmin/

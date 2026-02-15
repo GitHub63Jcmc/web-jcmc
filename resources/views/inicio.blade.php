@@ -5,7 +5,7 @@
 <head class="d-flex flex-column min-vh-100">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INICIO - Laravel</title>
+    <title>Home | JCMC</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
