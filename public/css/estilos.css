@@ -1,4 +1,5 @@
-*{
+/* 1. RESET Y BASES */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,113 +9,67 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #0a001b;
+    color: #a4a1a7;
 }
 
-div.fondosDatos,
-div.fondosDatos,
-table.fondosDatos, 
-table.fondosDatos thead, 
-table.fondosDatos tbody, 
-table.fondosDatos tr, 
+/* 2. COMPONENTES REUTILIZABLES (Tablas y Datos) */
+.fondosDatos, 
 table.fondosDatos th, 
 table.fondosDatos td {
     background-color: #1e1e1f !important;
-    color: #807e83!important;
-    border-color: rgba(83, 82, 82, 0.2); /* Color negro con 50% de opacidad */
-    box-shadow: 4px 4px 10px #2a2a2c; /* Un gris oscuro más claro que #1e1e1f */
+    color: #807e83 !important;
+    border: 1px solid rgba(83, 82, 82, 0.2);
+    box-shadow: 4px 4px 10px #2a2a2c;
 }
 
-.table-bordered {
-    border-color: rgba(83, 82, 82, 0.2); /* Color negro con 20% de opacidad */
-}
+.colorTexto { color: #a4a1a7 !important; font-weight: bold !important; }
+.titulosDatos { color: #6e6c70 !important; }
 
-.titulosDatos {
-    color: #6e6c70!important;
-}
-.elBody {
-    /* background-color: #545455; */
-    background-color: #333!important;
-}
-
-.colorTexto {
-    color: #a4a1a7!important;
-    font-weight: bold!important;
-}
-
-p {
-    font-size: 18px;
-    color: darkgreen;
-}
-.tamano-texto {
-    font-size: 13px;
-}
-/* p del footer */
-.text-footer {
-    color: #750a0c;
-}
-
-.miNombre {
-    font-size: 16px;
-    color: #660d0e;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.row {
-    --bs-gutter-x: 0rem;
-    --bs-gutter-y: 0rem;
-}
-.col {
-    --bs-gutter-x: 1rem;
-    --bs-gutter-y: 1.5rem;
-}
-
-.nav {
-    margin-bottom: 20px;
-}
-
-.margin_abajo_as {
-    padding: auto;
-}
-
-/* ----------------------------- header ------------------------------- */
+/* 3. HEADER Y NAVEGACIÓN */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
     color: white;
-    padding: 0rem;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header .logo a {
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-decoration: none;
+    font-weight: bold;
 }
 
-.menu.show {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    height: 100%;
-    z-index: 1000;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.header .menu ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
 }
 
+.header .menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
 
-.header .hamburger {
+.header .menu ul li a:hover { color: darkgreen; }
+
+/* Menú Hamburguesa (Oculto por defecto) */
+.hamburger {
     display: none;
     background: none;
     border: none;
     cursor: pointer;
 }
 
-.header .hamburger span {
+.hamburger span {
     display: block;
     width: 25px;
     height: 3px;
@@ -122,189 +77,105 @@ p {
     background-color: white;
 }
 
-
-.header .menu {
-    display: flex;
-    gap: 1rem;
-}
-
-.formacion-ul {
-    list-style-type: none;
-}
-.header .menu ul {
-    display: flex;
-    gap: 2rem;
-    margin: 0 auto;
-    margin-right: 10px;
-}
-
-.header .menu ul li {
-    list-style: none;
-}
-.header .menu ul li a {
-    padding:6px 10px;
-    color: white;
-    text-decoration: none;
-    font-size: .8rem;
-    border-radius: 5px;
-}
-.header .menu ul li a:hover {
-    text-decoration: underline;
-}
-
-.header .close-menu {
-    display: none;
-}
-
-.sapnTanano {
-    font-size: 12px;
-    color: #a4a1a7;
-}
-/* ------------- querys menu -------------------------------- */
-@media (max-width: 768px) {
-    .header .menu {
-        display: none;
-    }
-
-    .header .hamburger {
-        display: block;
-    }
-
-    .menu.active {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        height: 100%;
-        padding: 2rem;
-    }
-
-    .menu.active ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .service-row {
-        flex-direction: column;
-    }
-
-    .footer {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 576px) { /* Teléfonos pequeños */
-    .header .menu ul {
-        flex-direction: column;
-    }
-    .footer {
-        grid-template-columns: 1fr; /* Una sola columna */
-    }
-}
-
-@media (max-width: 768px) {
-    .menu {
-        display: none;
-    }
-
-    .menu.show {
-        display: flex; 
-    }
-
-    .hamburger {
-        display: block;
-    }
-}
-
-
-/* Media Query para tablet (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
-    }
-}
-
-/* Media Query para dispositivos más pequeños (móviles) */
-@media (max-width: 767px) {
-    .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Auto ajustable */
-    }
-}
-/* ------------------------------------- */
+/* 4. SECCIÓN HERO */
 .hero {
-    width: 100%;
-    height: 100%;
-    min-height: 88vh;
-    background: fixed rgb(10, 0, 27);
-    border-top: 0px solid rgb(43, 105, 251);
+    min-height: 85vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2rem 1rem;
-    margin-bottom: -2px;
 }
 
 .hero-inner {
-    width: 100%;
-    max-width: calc(1280px + 2rem);
-    padding: 1rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    color: rgb(255, 255, 255);
+    flex-wrap: wrap; /* Permite que la imagen baje en móviles */
+    justify-content: center;
     gap: 2rem;
+    max-width: 1200px;
 }
 
-.hero-text {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 1rem;
-    text-align: left;
-}
+.hero-text { flex: 1; min-width: 300px; text-align: left; }
+.hero-image { flex: 1; min-width: 300px; }
+.hero-image img { width: 100%; max-width: 500px; border-radius: 10px; }
 
 .welcome {
     color: darkgreen;
-    margin-top: 10px;
-    font-size: 40px;
-    font-family: Arial;
+    font-size: clamp(2rem, 5vw, 3rem); /* Tamaño fluido */
     font-weight: bold;
-    margin: 100px 100px;
-    animation: welcome 10s infinite;
-    /* animation: welcome 5s ease-out forwards; */
+    margin: 1rem 0;
+    animation: welcome 3s ease-out forwards;
 }
 
+/* 5. MEDIA QUERIES (EL CORAZÓN DEL RESPONSIVE) */
+
+.hamburger { display: none; cursor: pointer; border: none; background: none; }
+
+@media (max-width: 768px) {
+    /* HEADER MÓVIL */
+    .hamburger { display: block; }
+
+    .header .menu {
+        display: none; /* Se activa con JS añadiendo la clase .show */
+    }
+
+    .header .menu.show {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100vh;
+        background-color: rgba(10, 0, 27, 0.98);
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+    }
+
+    .header .menu.show ul {
+        flex-direction: column;
+        font-size: 1.5rem;
+    }
+
+    /* HERO MÓVIL */
+    .hero-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text { text-align: center; }
+
+    /* TABLAS MÓVIL */
+    .fondosDatos {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+footer.elBody {
+    background-color: #333 !important;
+    padding: 1.5rem 0;
+    width: 100%;
+}
+
+/* Evita que los iconos sociales se amontonen en móvil */
+.social-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem !important;
+}
+
+@media (max-width: 576px) {
+    footer .header { /* Si mantienes la etiqueta header dentro del footer */
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    footer .menu ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* 6. ANIMACIONES */
 @keyframes welcome {
-    0% {
-      opacity: 0;
-      transform: translateX(-100vw) skewX(70deg);
-    }
-    60% {
-      opacity: 1;
-      transform: skewX(-20deg);
-      
-    }
-    80% {
-      transform: skewX(15deg);
-    }
-}
-  
-
-.hero-image {
-    animation: 0.3sease-in-out 0s 1 normal none running fadeIn;
-}
-
-.elSpan {
-    font-size: 20px;
-}
-
-/* ------------- portafolio ----------------- */
-.colorFondoCard {
-    background-color: #6f6d70;
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
 }

@@ -1,5 +1,4 @@
 
-@include('partials._header')
 <!DOCTYPE html>
 <html lang="es">
 <head class="d-flex flex-column min-vh-100">
@@ -10,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 <body class="d-flex flex-column min-vh-100">
+    @include('partials._header')
 
     <div class="container-fluid m-auto hero">
         <div class="hero-inner">
@@ -19,16 +19,16 @@
             </div>
             <div class="hero-image m-1">
                 <picture>
-                    <source srcset="{{ asset('img/hero_setup.avif') }}" alt="Imagen Inicio">
-                    <source srcset="{{ asset('img/hero_setup.webp') }}" alt="Imagen Inicio">
+                    <source srcset="{{ asset('img/hero_setup.avif') }}" type="image/avif">
+                    <source srcset="{{ asset('img/hero_setup.webp') }}" type="image/webp">
                     <img src="{{ asset('img/hero_setup.jpg') }}" alt="Imagen Inicio">
                 </picture>
             </div>
         </div>
     </div>
 
-@include('partials._footer')
-<script src="{{ asset('js/menu.js') }}"></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    @include('partials._footer')
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

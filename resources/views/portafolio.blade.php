@@ -1,4 +1,3 @@
-@include('partials._header')
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 <body class="d-flex flex-column min-vh-100">
+    @include('partials._header')
 
     <div class="container-fluid m-auto hero mb-5">
         <div class="hero-inner">
@@ -23,8 +23,8 @@
             </div>
             <div class="hero-image m-1">
                 <picture>
-                    <source srcset="{{ asset('img/hero_setup.avif') }}" alt="Imagen Inicio">
-                    <source srcset="{{ asset('img/hero_setup.webp') }}" alt="Imagen Inicio">
+                    <source srcset="{{ asset('img/hero_setup.avif') }}">
+                    <source srcset="{{ asset('img/hero_setup.webp') }}">
                     <img src="{{ asset('img/hero_setup.jpg') }}" alt="Imagen Inicio">
                 </picture>
             </div>
@@ -57,6 +57,5 @@
 @include('partials._footer')
 <script src="{{ asset('js/menu.js') }}"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
