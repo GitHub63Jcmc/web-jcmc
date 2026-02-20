@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOG - Mi primer Laravel</title>
+    <title>BLOG</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}"?v=1.1>
 </head>
 <body class="d-flex flex-column min-vh-100">
     @include('partials._header')
 
-<div class="container-fluid m-auto hero">
+    <div class="container-fluid m-auto hero">
     <div class="hero-inner">
         <div class="hero-text">
         <h1 class="welcome">WELCOME MY BLOG</h1>
@@ -20,16 +20,16 @@
         </div>
         <div class="hero-image m-1">
             <picture>
-                <source srcset="{{ asset('img/hero_setup.avif') }}">
-                <source srcset="{{ asset('img/hero_setup.webp') }}">
+                <source srcset="{{ asset('img/hero_setup.avif') }}" type="image/avif">
+                <source srcset="{{ asset('img/hero_setup.webp') }}" type="image/webp">
                 <img src="{{ asset('img/hero_setup.jpg') }}" alt="Imagen Inicio">
             </picture>
         </div>
     </div>
-</div>
+    </div>
 
-@include('partials._footer')
-<script src="{{ asset('js/menu.js') }}"></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    @include('partials._footer')
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

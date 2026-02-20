@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMACIÓN</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}"?v=1.1>
 </head>
 <body class="d-flex flex-column min-vh-100">
     @include('partials._header')
 
-<div class="container-fluid m-auto hero">
+    <div class="container-fluid m-auto hero">
     <div class="hero-inner">
         <div class="hero-text">
             <h1 class="welcome">WELCOME MY TRAINING</h1>
@@ -26,11 +26,11 @@
             </picture>
         </div>
     </div>
-</div>
+    </div>
 
-<!-- --------------------  Formación y Educación ---------------------------- -->
+    <!-- -------  Formación y Educación ---------------------------- -->
 
-<div class="container mt-2">
+    <div class="container mt-2">
     <h2 class="text-center welcome">Formación Académica</h2>
     @foreach($formaciones as $formacion)
         <div class="card m-5 colorTexto">
@@ -67,9 +67,9 @@
             </div>
         </div>
     @endforeach
-</div>
 
-@include('partials._footer')
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    @include('partials._footer')
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

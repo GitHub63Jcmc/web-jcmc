@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORTAFOLIO - jcmc</title>
+    <title>PORTFOLIO - jcmc</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}"?v=1.1>
 </head>
 <body class="d-flex flex-column min-vh-100">
     @include('partials._header')
@@ -54,8 +54,8 @@
         </div>
     </div>
 
-@include('partials._footer')
-<script src="{{ asset('js/menu.js') }}"></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    @include('partials._footer')
+    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

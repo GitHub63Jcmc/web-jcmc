@@ -18,7 +18,7 @@
             <li><a href="{{ url('/blog') }}" class="fw-bold text-secondary text-decoration-none bg-black">Blog</a></li>
             <li><a href="{{ url('/formacion') }}" class="fw-bold text-secondary text-decoration-none bg-black">Formación</a></li>
             <li><a href="{{ url('/contacto') }}" class="fw-bold text-secondary text-decoration-none bg-black">Contacto</a></li>
-            <li><a href="{{ url('/portafolio') }}" class="fw-bold text-secondary text-decoration-none bg-black">Portafolio</a></li>
+            <li><a href="{{ url('/portafolio') }}" class="fw-bold text-secondary text-decoration-none bg-black">Portfolio</a></li>
         </ul>
         <button class="close-menu" aria-label="Cerrar menú">X</button>
     </nav>

@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<head class="d-flex flex-column min-vh-100">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | JCMC</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}"?v=1.1>
 </head>
 <body class="d-flex flex-column min-vh-100">
     @include('partials._header')
