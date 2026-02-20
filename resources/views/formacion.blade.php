@@ -31,42 +31,43 @@
     <!-- -------  Formación y Educación ---------------------------- -->
 
     <div class="container mt-2">
-    <h2 class="text-center welcome">Formación Académica</h2>
-    @foreach($formaciones as $formacion)
-        <div class="card m-5 colorTexto">
-            <div class="card-body fondosDatos">
-                <h3 class="mb-5"><strong>Centro de Formación:</strong></h3>
+        <h2 class="text-center welcome">Formación Académica</h2>
+        @foreach($formaciones as $formacion)
+            <div class="card m-5 colorTexto">
+                <div class="card-body fondosDatos">
+                    <h3 class="mb-5"><strong>Centro de Formación:</strong></h3>
 
-                <h4><span class="elSpan text-decoration-underline"> {{ $formacion->centro_formacion }} </span></h4>
-                <p class="text-start px-5 mt-5"><strong class="titulosDatos">Título del Curso: </strong> <span class="colorTexto"> {{ $formacion->titulo_curso }}</span></p>
-                <p class="text-start px-5"><strong class="titulosDatos">Fechas Inicio: </strong> <span class="colorTexto">{{ \Carbon\Carbon::parse($formacion->fecha_inicio)->format('d/m/Y') }}</span></p>
-                <p class="text-start px-5"><strong class="titulosDatos">Fechas Final: </strong> <span class="colorTexto">{{ \Carbon\Carbon::parse($formacion->fecha_fin)->format('d/m/Y') }}</span></p>
-                <p class="text-start px-5"><strong class="titulosDatos">Horas formativas: </strong> <span class="colorTexto">{{ $formacion->horas_formativas }}</span></p>
-                <p class="text-start px-5"><strong class="titulosDatos">Formación/Código del curso: </strong> <span class="colorTexto">{{ $formacion->codigo_curso }}</span></p>
-                <p class="text-start px-5"><strong class="titulosDatos">Família Profesional: </strong> <span class="colorTexto">{{ $formacion->familia_profesional }}</span></p>
-                <h4 class="mt-5 mb-3 fw-bold">Módulos del Curso:</h4>
+                    <h4><span class="elSpan text-decoration-underline"> {{ $formacion->centro_formacion }} </span></h4>
+                    <p class="text-start px-5 mt-5"><strong class="titulosDatos">Título del Curso: </strong> <span class="colorTexto"> {{ $formacion->titulo_curso }}</span></p>
+                    <p class="text-start px-5"><strong class="titulosDatos">Fechas Inicio: </strong> <span class="colorTexto">{{ \Carbon\Carbon::parse($formacion->fecha_inicio)->format('d/m/Y') }}</span></p>
+                    <p class="text-start px-5"><strong class="titulosDatos">Fechas Final: </strong> <span class="colorTexto">{{ \Carbon\Carbon::parse($formacion->fecha_fin)->format('d/m/Y') }}</span></p>
+                    <p class="text-start px-5"><strong class="titulosDatos">Horas formativas: </strong> <span class="colorTexto">{{ $formacion->horas_formativas }}</span></p>
+                    <p class="text-start px-5"><strong class="titulosDatos">Formación/Código del curso: </strong> <span class="colorTexto">{{ $formacion->codigo_curso }}</span></p>
+                    <p class="text-start px-5"><strong class="titulosDatos">Família Profesional: </strong> <span class="colorTexto">{{ $formacion->familia_profesional }}</span></p>
+                    <h4 class="mt-5 mb-3 fw-bold">Módulos del Curso:</h4>
 
-                <table class="table table-bordered fondosDatos elBody table-bordered">
-                    <thead>
-                        <tr>
-                            <th>CÓDMF</th>
-                            <th>DENOMINACIÓN MÓDULO FORMATIVO</th>
-                            <th>Horas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($formacion->modulos  as $modulo)
+                    <table class="table table-bordered fondosDatos elBody table-bordered">
+                        <thead>
                             <tr>
-                                <td><span class="colorTexto">{{ $modulo->codigo_modulo }}</span></td>
-                                <td><span class="colorTexto">{{ $modulo->nombre_modulo }}</span></td>
-                                <td><span class="colorTexto">{{ $modulo->horas }}</span></td>
+                                <th>CÓDMF</th>
+                                <th>DENOMINACIÓN MÓDULO FORMATIVO</th>
+                                <th>Horas</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach($formacion->modulos  as $modulo)
+                                <tr>
+                                    <td><span class="colorTexto">{{ $modulo->codigo_modulo }}</span></td>
+                                    <td><span class="colorTexto">{{ $modulo->nombre_modulo }}</span></td>
+                                    <td><span class="colorTexto">{{ $modulo->horas }}</span></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
 
     @include('partials._footer')
     <script src="{{ asset('js/menu.js') }}"></script>
