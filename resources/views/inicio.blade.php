@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | JCMC</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}"?v=1.1>
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}"?v=1.0.1>
 </head>
 <body class="d-flex flex-column min-vh-100">
     @include('partials._header')
@@ -28,7 +28,7 @@
     </div>
 
     @include('partials._footer')
-    <script src="{{ asset('js/menu.js') }}"></script>
+    <script src="{{ asset('js/menu.js') }}"?v=1.0.1></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
