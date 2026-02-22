@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>contacto - Web-jcmc</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}?v=1.0.2">
+    <link rel="stylesheet" href="{{ asset('css/estilos.css') }}?v=1.0.3">
 </head>
 <body class="d-flex flex-column min-vh-100">
     @include('partials._header')
