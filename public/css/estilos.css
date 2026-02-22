@@ -9,11 +9,10 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #0a001b;
-    background-color: green;
     color: #a4a1a7;
 }
 
-/* 2. COMPONENTES REUTILIZABLES (Tablas y Datos) */
+/* 2. COMPONENTES REUTILIZABLES */
 .fondosDatos, 
 table.fondosDatos th, 
 table.fondosDatos td {
@@ -26,7 +25,7 @@ table.fondosDatos td {
 .colorTexto { color: #a4a1a7 !important; font-weight: bold !important; }
 .titulosDatos { color: #6e6c70 !important; }
 
-/* 3. HEADER Y NAVEGACIÓN -------------------- */
+/* 3. HEADER Y NAVEGACIÓN (Escritorio) */
 .header {
     display: flex;
     justify-content: space-between;
@@ -57,47 +56,12 @@ table.fondosDatos td {
     transition: 0.3s;
 }
 
-/* --- MENÚ MÓVIL (Punto crítico) --- */
-@media (max-width: 991px) {
-    .header .hamburger {
-        display: block !important; /* Aparece el botón */
-    }
-
-    .header .menu {
-        display: none; /* Escondemos el menú normal */
-    }
-
-    .header .menu.show {
-        display: flex !important;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100vh;
-        background-color: rgba(10, 0, 27, 0.98) !important;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-
-    .header .menu ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-
-    .header .menu ul li a {
-        font-size: 1.5rem !important;
-    }
-}
-
-/* Menú Hamburguesa (Oculto por defecto) */
-.hamburger {
+/* Hamburguesa y X (Ocultas por defecto en PC) */
+.hamburger, .close-menu {
     display: none;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
-    z-index: 10001; /* Asegúrate de que esté por encima de todo */
 }
 
 .hamburger span {
@@ -106,6 +70,54 @@ table.fondosDatos td {
     height: 3px;
     margin: 5px;
     background-color: white;
+}
+
+/* --- MENÚ MÓVIL (Unificado para pantallas < 991px) --- */
+@media (max-width: 991px) {
+    .hamburger { 
+        display: block; 
+        z-index: 1001;
+    }
+
+    .header .menu {
+        display: none; /* Se oculta el nav normal */
+    }
+
+    /* El Menú cuando se pulsa la hamburguesa */
+    .header .menu.show {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; 
+        width: 100%; height: 100vh;
+        background-color: rgba(10, 0, 27, 0.98) !important;
+        justify-content: center; /* Centra la lista verticalmente */
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .header .menu.show ul {
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 50px; /* Espacio antes de la X */
+    }
+
+    .header .menu.show ul li a {
+        font-size: 1.8rem !important;
+    }
+
+    /* La X personalizada al final del menú */
+    .header .menu.show .close-menu {
+        display: block !important;
+        background-color: #333;
+        color: white;
+        border: 2px solid white;
+        padding: 10px 40px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
 }
 
 /* 4. SECCIÓN HERO */
@@ -119,7 +131,7 @@ table.fondosDatos td {
 
 .hero-inner {
     display: flex;
-    flex-wrap: wrap; /* Permite que la imagen baje en móviles */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
     max-width: 1200px;
@@ -131,67 +143,25 @@ table.fondosDatos td {
 
 .welcome {
     color: darkgreen;
-    font-size: clamp(2rem, 5vw, 3rem); /* Tamaño fluido */
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: bold;
     margin: 1rem 0;
     animation: welcome 3s ease-out forwards;
 }
 
-/* 5. MEDIA QUERIES (EL CORAZÓN DEL RESPONSIVE) */
 @media (max-width: 768px) {
-    /* HEADER MÓVIL */
-    .hamburger { display: block; }
-
-    .header .menu {
-        display: none; /* Se activa con JS añadiendo la clase .show */
-    }
-
-    .header .menu.show {
-        display: flex !important;
-        flex-direction: column;
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100vh;
-        background-color: rgba(10, 0, 27, 0.98);
-        justify-content: center;
-        align-items: center;
-        z-index: 2000;
-    }
-
-    .header .menu.show ul {
-        flex-direction: column;
-        font-size: 1.5rem;
-    }
-
-    /* HERO MÓVIL */
-    .hero-inner {
-        flex-direction: column;
-        text-align: center;
-    }
-
+    .hero-inner { flex-direction: column; text-align: center; }
     .hero-text { text-align: center; }
-
-    /* TABLAS MÓVIL */
-    .fondosDatos {
-        display: block;
-        overflow-x: auto;
-    }
+    .fondosDatos { display: block; overflow-x: auto; }
 }
 
-
+/* 5. FOOTER */
 footer.elBody {
     background-color: #333 !important;
     padding: 1.5rem 0;
     width: 100%;
 }
 
-/* Evita que los iconos sociales se amontonen en móvil */
-.social-icons {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem !important;
-}
-
-/* --- FOOTER (Arreglo para que no se rompa) --- */
 footer .footer-container {
     display: flex;
     justify-content: space-around;
@@ -201,11 +171,15 @@ footer .footer-container {
     padding: 20px;
 }
 
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem !important;
+}
+
 @media (max-width: 768px) {
-    footer .footer-container {
-        flex-direction: column;
-        text-align: center;
-    }
+    footer .footer-container { flex-direction: column; text-align: center; }
 }
 
 /* 6. ANIMACIONES */

@@ -13,7 +13,7 @@
     </button>
     <nav class="menu">
         <ul>
-            <li><a href="{{ url('/') }}" class="active fw-bold text-secondary text-decoration-none bg-black aria-current="page">Inicio</a></li>
+            <li><a href="{{ url('/') }}" class="active fw-bold text-secondary text-decoration-none bg-black" aria-current="page">Inicio</a></li>
             <li><a href="{{ url('/quiensoy') }}" class="fw-bold text-secondary text-decoration-none bg-black">Quien Soy</a></li>
             <li><a href="{{ url('/blog') }}" class="fw-bold text-secondary text-decoration-none bg-black">Blog</a></li>
             <li><a href="{{ url('/formacion') }}" class="fw-bold text-secondary text-decoration-none bg-black">Formación</a></li>

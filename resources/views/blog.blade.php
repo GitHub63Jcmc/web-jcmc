@@ -12,20 +12,20 @@
     @include('partials._header')
 
     <div class="container-fluid m-auto hero">
-    <div class="hero-inner">
-        <div class="hero-text">
-        <h1 class="welcome">WELCOME MY BLOG</h1>
-            <h6 class="colorTexto">Desarrollador Web en formación con 3 años de experiencia, práctica en el desarrollo de sitios web y aplicaciones a través de proyectos personales y cursos especializados. Habilidad en tecnologías como HTML5, CSS3, JavaScript, y PHP, con conocimientos en WordPress, bases de datos (MySQL) y el uso de frameworks modernos como Bootstrap. Motivado para seguir aprendiendo y aplicando nuevas tecnologías, y con experiencia previa en la gestión de proyectos y atención al detalle, adquirida durante una extensa carrera en estos últimos años.
-            </h6>
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1 class="welcome">WELCOME MY BLOG</h1>
+                <h6 class="colorTexto">Desarrollador Web en formación con 3 años de experiencia, práctica en el desarrollo de sitios web y aplicaciones a través de proyectos personales y cursos especializados. Habilidad en tecnologías como HTML5, CSS3, JavaScript, y PHP, con conocimientos en WordPress, bases de datos (MySQL) y el uso de frameworks modernos como Bootstrap. Motivado para seguir aprendiendo y aplicando nuevas tecnologías, y con experiencia previa en la gestión de proyectos y atención al detalle, adquirida durante una extensa carrera en estos últimos años.
+                </h6>
+            </div>
+            <div class="hero-image m-1">
+                <picture>
+                    <source srcset="{{ asset('img/hero_setup.avif') }}" type="image/avif">
+                    <source srcset="{{ asset('img/hero_setup.webp') }}" type="image/webp">
+                    <img src="{{ asset('img/hero_setup.jpg') }}" alt="Imagen Inicio">
+                </picture>
+            </div>
         </div>
-        <div class="hero-image m-1">
-            <picture>
-                <source srcset="{{ asset('img/hero_setup.avif') }}" type="image/avif">
-                <source srcset="{{ asset('img/hero_setup.webp') }}" type="image/webp">
-                <img src="{{ asset('img/hero_setup.jpg') }}" alt="Imagen Inicio">
-            </picture>
-        </div>
-    </div>
     </div>
 
     @include('partials._footer')
