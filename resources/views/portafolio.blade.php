@@ -51,6 +51,9 @@
                     <p class="text-center text-muted">No hay proyectos disponibles en este momento.</p>
                 </div>
             @endforelse
+            <div class="d-flex justify-content-center mt-5 mb-5">
+                {{ $proyectos->links() }}
+            </div>
         </div>
     </div>
 

@@ -149,11 +149,40 @@ table.fondosDatos td {
     animation: welcome 3s ease-out forwards;
 }
 
+/* 5. MEDIA QUERIES UNIFICADOS (768px) */
 @media (max-width: 768px) {
+    /* Ajustes del Hero */
+    .hero-inner { flex-direction: column; text-align: center; }
+    .hero-text { text-align: center; }
+
+    /* Ajustes de Tablas y Datos */
+    .fondosDatos { 
+        display: block; 
+        overflow-x: auto; 
+        width: 100% !important; /* Asegura que ocupe todo el ancho */
+        margin: 0 auto !important; 
+    }
+
+    /* Ajuste para que FORMACIÓN ocupe todo el ancho como Portfolio */
+    .formacion-container, .container, .main-content { 
+        padding-left: 5px !important; 
+        padding-right: 5px !important; 
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Ajustes del Footer */
+    footer .footer-container { 
+        flex-direction: column; 
+        text-align: center; 
+    }
+}
+
+/* @media (max-width: 768px) {
     .hero-inner { flex-direction: column; text-align: center; }
     .hero-text { text-align: center; }
     .fondosDatos { display: block; overflow-x: auto; }
-}
+} */
 
 /* 5. FOOTER */
 footer.elBody {
@@ -178,9 +207,9 @@ footer .footer-container {
     gap: 1rem !important;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     footer .footer-container { flex-direction: column; text-align: center; }
-}
+} */
 
 /* 6. ANIMACIONES */
 @keyframes welcome {
