@@ -17,12 +17,12 @@
 
         <nav class="footer-nav">
             <ul class="d-flex gap-3 list-unstyled mb-0">
-                <li><a href="{{ url('/') }}" class="text-secondary text-decoration-none">Inicio</a></li>
-                <li><a href="{{ url('/quiensoy') }}" class="text-secondary text-decoration-none">Quien soy</a></li>
-                <li><a href="{{ url('/blog') }}" class="text-secondary text-decoration-none">Blog</a></li>
-                <li><a href="{{ url('/formacion') }}" class="text-secondary text-decoration-none">Formación</a></li>
-                <li><a href="{{ url('/contacto') }}" class="text-secondary text-decoration-none">Contacto</a></li>
-                <li><a href="{{ url('/portafolio') }}" class="text-secondary text-decoration-none">Portfolio</a></li>
+                <li><a href="{{ url('/') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Inicio</a></li>
+                <li><a href="{{ url('/quiensoy') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Quien soy</a></li>
+                <li><a href="{{ url('/blog') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Blog</a></li>
+                <li><a href="{{ url('/formacion') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Formación</a></li>
+                <li><a href="{{ url('/contacto') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Contacto</a></li>
+                <li><a href="{{ url('/portafolio') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Portfolio</a></li>
             </ul>
         </nav>
     </div>

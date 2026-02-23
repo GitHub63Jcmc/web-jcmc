@@ -69,7 +69,7 @@ table.fondosDatos td {
     width: 25px;
     height: 3px;
     margin: 5px;
-    background-color: white;
+    background-color: rgb(194, 191, 191);
 }
 
 /* --- MENÚ MÓVIL (Unificado para pantallas < 991px) --- */
@@ -109,9 +109,9 @@ table.fondosDatos td {
     /* La X personalizada al final del menú */
     .header .menu.show .close-menu {
         display: block !important;
-        background-color: #333;
-        color: white;
-        border: 2px solid white;
+        background-color: #111111;
+        color: rgb(134, 132, 132);
+        border: 2px solid rgb(54, 54, 54);
         padding: 10px 40px;
         font-size: 1.2rem;
         font-weight: bold;
@@ -176,13 +176,27 @@ table.fondosDatos td {
         flex-direction: column; 
         text-align: center; 
     }
+
+    /* ------------------------------------------------------------------ */
+    /* 1. Hacemos los botones un poco más pequeños en móvil */
+    .page-item .page-link {
+        padding: 6px 12px !important;
+        font-size: 0.85rem;
+    }
+
+    /* 2. Ocultamos el texto de "Showing 1 to 3..." que mete Laravel */
+    /* (Solo si tu versión de Laravel lo muestra por defecto) */
+    .d-none.flex-1.items-center.justify-between, 
+    nav p.text-sm {
+        display: none !important;
+    }
+
+    /* 3. Aseguramos que el contenedor de los números esté centrado */
+    .pagination {
+        margin-top: 10px;
+    }
 }
 
-/* @media (max-width: 768px) {
-    .hero-inner { flex-direction: column; text-align: center; }
-    .hero-text { text-align: center; }
-    .fondosDatos { display: block; overflow-x: auto; }
-} */
 
 /* 5. FOOTER */
 footer.elBody {
@@ -207,12 +221,50 @@ footer .footer-container {
     gap: 1rem !important;
 }
 
-/* @media (max-width: 768px) {
-    footer .footer-container { flex-direction: column; text-align: center; }
-} */
-
 /* 6. ANIMACIONES */
 @keyframes welcome {
     0% { opacity: 0; transform: translateX(-50px); }
     100% { opacity: 1; transform: translateX(0); }
+}
+
+/* --- ESTILO PERSONALIZADO DEL PAGINADOR (Gris y Sutil) --- */
+
+/* 1. Contenedor principal sin bordes llamativos */
+.pagination {
+    border: none;
+    background-color: transparent;
+    gap: 5px; /* Espacio entre los numeritos */
+    flex-wrap: wrap; /* Permite que los botones bajen si no caben */
+    justify-content: center;
+}
+
+/* 2. Estilo de los botones (Números y Flechas) */
+.page-item .page-link {
+    background-color: #1e1e1f !important; /* El gris oscuro de tus tablas */
+    color: #a4a1a7 !important; /* Tu color de texto gris claro */
+    border: 1px solid rgba(83, 82, 82, 0.3) !important; /* Borde muy fino y discreto */
+    border-radius: 5px !important; 
+    padding: 8px 16px;
+    transition: 0.3s;
+}
+
+/* 3. El número ACTIVO (El que estás viendo) */
+.page-item.active .page-link {
+    background-color: #333 !important; /* Un poco más claro o el del header */
+    color: #ffffff !important; /* Texto blanco para resaltar donde estás */
+    font-weight: bold;
+    border-color: #a4a1a7 !important;
+}
+
+/* 4. Efecto Hover (Al pasar el ratón) */
+.page-item .page-link:hover {
+    background-color: #a4a1a7 !important;
+    color: #0a001b !important; /* Texto oscuro al resaltar */
+}
+
+/* 5. Flechas deshabilitadas */
+.page-item.disabled .page-link {
+    background-color: transparent !important;
+    color: #444 !important;
+    border: none !important;
 }

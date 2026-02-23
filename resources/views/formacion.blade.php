@@ -67,9 +67,15 @@
                 </div>
             </div>
         @endforeach
-        <div class="d-flex justify-content-center mt-5 mb-5">
-            {{ $formaciones->links() }}
+
+        <div class="container-fluid">
+            <div class="d-flex justify-content-center mt-5 mb-5 px-2">
+                {{ $formaciones->links() }}
+            </div>
         </div>
+        {{-- <div class="d-flex justify-content-center mt-5 mb-5">
+            {{ $formaciones->links() }}
+        </div> --}}
     </div>
 
     @include('partials._footer')
