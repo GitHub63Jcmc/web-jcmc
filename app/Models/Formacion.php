@@ -9,7 +9,6 @@ class Formacion extends Model
 {
     use HasFactory;
 
-    // Asegúrate de que el nombre de la tabla coincide con el de tu base de datos
     protected $table = 'formaciones';  // Aquí debe coincidir con el nombre de la tabla en la base de datos
 
     // Aquí defines los campos que pueden ser asignados de forma masiva

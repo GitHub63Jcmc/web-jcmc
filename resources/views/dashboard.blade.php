@@ -11,6 +11,11 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <div class="mt-6">
+                    <a href="{{ route('admin.formacion.crear') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        + Añadir Nueva Formación
+                    </a>
+                </div>
             </div>
         </div>
     </div>

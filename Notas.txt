@@ -1,6 +1,6 @@
 Actualizar automaticamente github y hostinger
 1 - git add .  
-2 - git commit -m "Prueba de despliegue automático: cambio de color"
+2 - git commit -m "Restauración de rutas, controladores y panel de administración con Breeze - Fix: Corrección de rutas dinámicas y reconexión de controladores. Add: Funcionalidad para insertar formación desde el Dashboard. - Despliegue: Estructura de rutas corregida y panel de gestión de formación operativo"
 3 - git push origin main
 
 
