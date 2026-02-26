@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Formacion; // Importamos tu modelo
 use App\Models\Portafolio; // <--- IMPORTANTE: Añadimos el modelo Portafolio
+use App\Models\Modulo;
+
+
 
 class AdminController extends Controller
 {
@@ -63,5 +66,35 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('portfolio')->with('success', 'Proyecto añadido correctamente.');
+    }
+
+    public function crearModulo()
+    {
+        // Traemos todas las formaciones para el desplegable (select)
+        $formaciones = Formacion::all();
+        return view('admin.crear-modulo', compact('formaciones'));
+    }
+
+    public function guardarModulo(Request $request)
+    {
+        // 1. Validamos (esto detendrá el proceso si falta algo)
+        $validated = $request->validate([
+            'formacion_id'  => 'required|exists:formaciones,id',
+            'nombre_modulo' => 'required|string|max:255',
+            'codigo_modulo' => 'required|string|max:50', // Lo ponemos required para testear
+            'horas'         => 'nullable|integer',
+        ]);
+
+        // 2. Insertamos manualmente los valores validados
+        Modulo::create([
+            'formacion_id'  => $validated['formacion_id'],
+            'nombre_modulo' => $validated['nombre_modulo'],
+            'codigo_modulo' => $validated['codigo_modulo'],
+            'horas'         => $validated['horas'] ?? 0,
+        ]);
+
+        Modulo::create($request->only(['formacion_id', 'codigo_modulo', 'nombre_modulo', 'horas']));
+
+        return redirect()->route('formacion')->with('success', 'Módulo añadido correctamente.');
     }
 }

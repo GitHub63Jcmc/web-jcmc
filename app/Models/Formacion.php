@@ -23,4 +23,10 @@ class Formacion extends Model
         'codigo_curso',
         'financiado_por'
     ];
+
+    public function modulos()
+    {
+        // Una formación tiene muchos módulos
+        return $this->hasMany(Modulo::class, 'formacion_id');
+    }
 }

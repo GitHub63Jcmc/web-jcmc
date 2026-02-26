@@ -31,6 +31,13 @@
     <!-- -------  Formación y Educación ---------------------------- -->
 
     <div class="container mt-2">
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                <strong>✅ ¡Hecho!</strong> {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        
         <h2 class="text-center welcome">Formación Académica</h2>
         @foreach($formaciones as $formacion)
             <div class="card m-2 colorTexto">
@@ -73,9 +80,6 @@
                 {{ $formaciones->links() }}
             </div>
         </div>
-        {{-- <div class="d-flex justify-content-center mt-5 mb-5">
-            {{ $formaciones->links() }}
-        </div> --}}
     </div>
 
     @include('partials._footer')

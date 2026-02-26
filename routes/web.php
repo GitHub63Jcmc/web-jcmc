@@ -39,6 +39,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/portfolio/crear', [AdminController::class, 'crearProyecto'])->name('admin.portfolio.crear');
     Route::post('/admin/portfolio/guardar', [AdminController::class, 'guardarProyecto'])->name('admin.portfolio.guardar');
 
+    // Rutas para Módulos
+    Route::get('/admin/modulo/crear', [AdminController::class, 'crearModulo'])->name('admin.modulo.crear');
+    Route::post('/admin/modulo/guardar', [AdminController::class, 'guardarModulo'])->name('admin.modulo.guardar');
+
     // Perfil de Usuario
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
