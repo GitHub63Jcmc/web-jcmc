@@ -1,15 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-200 dark:text-gray-200 leading-tight">
             {{ __('Panel de Administración') }}
         </h2>
     </x-slot>
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-indigo-500">
+                <div class="bg-gray-300 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-indigo-500">
                     <div class="flex items-center mb-4">
                         <span class="text-3xl mr-3">🎓</span>
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Formación</h3>
@@ -25,7 +26,7 @@
                     </a>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-orange-500">
+                <div class="bg-gray-300 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-orange-500">
                     <div class="flex items-center mb-4">
                         <span class="text-3xl mr-3">📚</span>
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Módulos</h3>
@@ -40,7 +41,7 @@
                     </a>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-green-500">
+                <div class="bg-gray-300 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-green-500">
                     <div class="flex items-center mb-4">
                         <span class="text-3xl mr-3">📂</span>
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Portfolio</h3>
