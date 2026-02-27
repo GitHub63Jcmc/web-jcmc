@@ -6,3 +6,4 @@ Actualizar automaticamente github y hostinger
 
 ------------------------------------------------
 
+https://buscador-de-recetas-jcmc.netlify.app/

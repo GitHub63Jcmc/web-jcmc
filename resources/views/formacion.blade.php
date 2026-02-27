@@ -38,7 +38,7 @@
             </div>
         @endif
         
-        <h2 class="text-center welcome">Formación Académica</h2>
+        <h2 class="text-center mb-5 welcome">Formación Académica</h2>
         @foreach($formaciones as $formacion)
             <div class="card m-2 colorTexto">
                 <div class="card-body fondosDatos">

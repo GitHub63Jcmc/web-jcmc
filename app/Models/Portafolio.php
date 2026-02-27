@@ -12,9 +12,4 @@ class Portafolio extends Model
     protected $table = 'portafolio';
     protected $fillable = ['titulo', 'imagen', 'url', 'descripcion'];
 
-    // Relación: Un módulo pertenece a una formación
-    public function formacion()
-    {
-        return $this->belongsTo(Formacion::class);
-    }
 }

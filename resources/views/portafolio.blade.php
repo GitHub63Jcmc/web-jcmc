@@ -33,7 +33,7 @@
 
 
     <div class="container-fluid">
-        <h2 class="text-center mb-4 titulosDatos">Mis Proyectos</h2>
+        <h2 class="text-center mb-5 welcome">Mis Proyectos</h2>
         <div class="row">
             @forelse ($proyectos as $proyecto)
                 <div class="col-md-6 col-lg-4">

@@ -40,24 +40,24 @@ class AdminController extends Controller
 
     public function guardarProyecto(Request $request)
     {
-        // 1. Validar
+        // 1. Validación
         $request->validate([
             'titulo' => 'required|string|max:255',
             'imagen' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'url' => 'nullable|url',
+            'descripcion' => 'required|string',
         ]);
 
         $nombreImagen = null;
 
-        // 2. Gestionar la subida de la imagen
+        // 2. Subida de imagen a public/img
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
-            // Creamos un nombre único basado en el tiempo para que no se repitan
             $nombreImagen = time() . '_' . $file->getClientOriginalName();
-            // Movemos el archivo a public/img/
             $file->move(public_path('img'), $nombreImagen);
         }
 
-        // 3. Guardar en la base de datos
+        // 3. Crear registro en la tabla 'portafolio'
         Portafolio::create([
             'titulo' => $request->titulo,
             'imagen' => $nombreImagen,
@@ -65,7 +65,8 @@ class AdminController extends Controller
             'descripcion' => $request->descripcion,
         ]);
 
-        return redirect()->route('portfolio')->with('success', 'Proyecto añadido correctamente.');
+        // Redirigimos al dashboard con el mensaje de éxito
+        return redirect()->route('dashboard')->with('success', 'Proyecto añadido correctamente.');
     }
 
     public function crearModulo()
@@ -96,5 +97,36 @@ class AdminController extends Controller
         Modulo::create($request->only(['formacion_id', 'codigo_modulo', 'nombre_modulo', 'horas']));
 
         return redirect()->route('formacion')->with('success', 'Módulo añadido correctamente.');
+    }
+
+    public function storePortafolio(Request $request)
+    {
+        // 1. Validar los datos
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'url' => 'nullable|url',
+            'descripcion' => 'required',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $nombreImagen = null;
+    
+        // 2. Gestionar la subida de la imagen
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $nombreImagen = time() . '_' . $imagen->getClientOriginalName();
+            // Guardar físicamente en public/img
+            $imagen->move(public_path('img'), $nombreImagen);
+        }
+    
+        // 3. Crear el registro en la base de datos
+        Portafolio::create([
+            'titulo' => $request->titulo,
+            'url' => $request->url,
+            'descripcion' => $request->descripcion,
+            'imagen' => $nombreImagen, // Guardamos el nombre del archivo
+        ]);
+    
+        return redirect()->route('dashboard')->with('success', 'Proyecto añadido al portfolio correctamente.');
     }
 }

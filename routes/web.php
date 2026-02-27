@@ -35,11 +35,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/formacion/crear', [AdminController::class, 'crearFormacion'])->name('admin.formacion.crear');
     Route::post('/admin/formacion/guardar', [AdminController::class, 'guardarFormacion'])->name('admin.formacion.guardar');
 
-    // Gestión de Portfolio
+    // Gestión de Portfolio (HEMOS UNIFICADO LOS NOMBRES)
     Route::get('/admin/portfolio/crear', [AdminController::class, 'crearProyecto'])->name('admin.portfolio.crear');
     Route::post('/admin/portfolio/guardar', [AdminController::class, 'guardarProyecto'])->name('admin.portfolio.guardar');
 
-    // Rutas para Módulos
+    // Gestión de Módulos
     Route::get('/admin/modulo/crear', [AdminController::class, 'crearModulo'])->name('admin.modulo.crear');
     Route::post('/admin/modulo/guardar', [AdminController::class, 'guardarModulo'])->name('admin.modulo.guardar');
 

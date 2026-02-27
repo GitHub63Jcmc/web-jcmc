@@ -14,7 +14,7 @@
 
                     <div class="mb-4">
                         <x-input-label for="titulo" :value="__('Título del Proyecto')" />
-                        <x-text-input id="titulo" name="titulo" type="text" class="mt-1 block w-full" required autofocus />
+                        <x-text-input id="titulo" name="titulo" type="text" class="mt-1 block w-full text-gray-900" required autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('titulo')" />
                     </div>
 
@@ -26,13 +26,14 @@
 
                     <div class="mb-4">
                         <x-input-label for="url" :value="__('URL del Proyecto')" />
-                        <x-text-input id="url" name="url" type="url" class="mt-1 block w-full" placeholder="https://..." />
+                        <x-text-input id="url" name="url" type="url" class="mt-1 block w-full border-gray-300 text-gray-900" placeholder="https://..." />
                         <x-input-error class="mt-2" :messages="$errors->get('url')" />
                     </div>
 
                     <div class="mb-4">
                         <x-input-label for="descripcion" :value="__('Descripción')" />
-                        <textarea id="descripcion" name="descripcion" rows="4" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
+                        <textarea id="descripcion" name="descripcion" rows="4" 
+                            class="mt-1 block w-full border-gray-300 text-gray-900 bg-white focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('descripcion')" />
                     </div>
 
@@ -40,7 +41,6 @@
                         <x-primary-button>{{ __('Guardar Proyecto') }}</x-primary-button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

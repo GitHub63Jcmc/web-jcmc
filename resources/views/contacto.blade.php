@@ -31,7 +31,7 @@
     </div>
 
     <div class="container my-5">
-    <h2 class="text-center mb-4 colorTexto">Contáctame</h2>
+    <h2 class="text-center mb-4 welcome">Contáctame</h2>
     @if(session('success'))
         <div id="alerta-exito" class="alert alert-success">
             {{ session('success') }}
