@@ -53,7 +53,7 @@
 
                     <div class="md:col-span-2">
                         <x-input-label for="financiado_por" :value="__('Financiado por')" />
-                        <x-text-input id="financiado_por" name="financiado_por" type="text" class="mt-1 block w-full" placeholder="Código del Curso" />
+                        <x-text-input id="financiado_por" name="financiado_por" type="text" class="mt-1 block w-full" placeholder="Financiado por" />
                     </div>
 
                     <div class="md:col-span-2 mt-4">
