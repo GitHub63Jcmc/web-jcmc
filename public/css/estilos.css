@@ -177,7 +177,6 @@ table.fondosDatos td {
         text-align: center; 
     }
 
-    /* ------------------------------------------------------------------ */
     /* 1. Hacemos los botones un poco más pequeños en móvil */
     .page-item .page-link {
         padding: 6px 12px !important;

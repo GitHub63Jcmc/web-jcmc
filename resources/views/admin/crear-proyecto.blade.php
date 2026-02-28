@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-200 dark:text-gray-200 leading-tight">
             {{ __('Añadir Nuevo Proyecto al Portfolio') }}
         </h2>
     </x-slot>
@@ -14,7 +14,7 @@
 
                     <div class="mb-4">
                         <x-input-label for="titulo" :value="__('Título del Proyecto')" />
-                        <x-text-input id="titulo" name="titulo" type="text" class="mt-1 block w-full text-gray-900" required autofocus />
+                        <x-text-input id="titulo" name="titulo" type="text" class="mt-1 block w-full text-gray-900" placeholder="Título del Proyecto" required autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('titulo')" />
                     </div>
 
@@ -33,7 +33,7 @@
                     <div class="mb-4">
                         <x-input-label for="descripcion" :value="__('Descripción')" />
                         <textarea id="descripcion" name="descripcion" rows="4" 
-                            class="mt-1 block w-full border-gray-300 text-gray-900 bg-white focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
+                            class="mt-1 block w-full border-gray-300 text-gray-900 bg-white focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" placeholder="Descripción"></textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('descripcion')" />
                     </div>
 
