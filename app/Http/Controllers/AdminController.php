@@ -20,13 +20,13 @@ class AdminController extends Controller
     public function guardarFormacion(Request $request)
     {
         // 1. Validar que los campos no estén vacíos
-        $request->validate([
+        $validated = $request->validate([
             'centro_formacion' => 'required|string|max:255',
             'titulo_curso' => 'required|string|max:255',
         ]);
 
-        // 2. Guardar en la base de datos
-        Formacion::create($request->all());
+        // 2. Guardar usando los datos validados (más seguro)
+        Formacion::create($validated);
 
         return redirect()->route('formacion')->with('success', '¡Formación añadida con éxito!');
     }
@@ -76,25 +76,24 @@ class AdminController extends Controller
         return view('admin.crear-modulo', compact('formaciones'));
     }
 
+    /* --- SECCIÓN DE MÓDULOS --- */
     public function guardarModulo(Request $request)
     {
         // 1. Validamos (esto detendrá el proceso si falta algo)
         $validated = $request->validate([
             'formacion_id'  => 'required|exists:formaciones,id',
             'nombre_modulo' => 'required|string|max:255',
-            'codigo_modulo' => 'required|string|max:50', // Lo ponemos required para testear
+            'codigo_modulo' => 'required|string|max:50',
             'horas'         => 'nullable|integer',
         ]);
 
-        // 2. Insertamos manualmente los valores validados
+        // 2. Insertamos UNA SOLA VEZ (He borrado la repetición que tenías)
         Modulo::create([
             'formacion_id'  => $validated['formacion_id'],
             'nombre_modulo' => $validated['nombre_modulo'],
             'codigo_modulo' => $validated['codigo_modulo'],
             'horas'         => $validated['horas'] ?? 0,
         ]);
-
-        Modulo::create($request->only(['formacion_id', 'codigo_modulo', 'nombre_modulo', 'horas']));
 
         return redirect()->route('formacion')->with('success', 'Módulo añadido correctamente.');
     }
