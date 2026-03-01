@@ -78,8 +78,8 @@
 
 
 
-@include('partials._footer')
-<script src="{{ asset('js/menu.js') }}?v=1.0.1"></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    @include('partials._footer')
+    <script src="{{ asset('js/menu.js') }}?v=1.0.1"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
