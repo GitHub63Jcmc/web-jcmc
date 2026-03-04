@@ -23,6 +23,9 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/formacion', [FormacionController::class, 'mostrarFormacion'])->name('formacion');
 Route::get('/portafolio', [PortafolioController::class, 'index'])->name('portafolio');
 
+// Ruta para guardar comentarios
+Route::post('/blog/comentario', [BlogController::class, 'storeComentario'])->name('comentario.store');
+
 // 4. ENVÍO DE FORMULARIO
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 

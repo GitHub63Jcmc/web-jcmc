@@ -29,21 +29,38 @@
     </div>
 
     <div class="container my-5">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                @foreach ($posts as $post)
-                    <article class="card mb-4 shadow-sm">
+        @foreach ($posts as $post)
+            <div class="row mb-5">
+                <div class="col-md-8 offset-md-2 p-3 fondosDatos">
+                    @if(session('success'))
+                        <div class="alert alert-success mt-2 small">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    {{-- Comentarios --}}
+                    <div class="card-footer bg-dark text-light pt-3 mb-1 rounded-2">
+                        <h6 class="">Deja un comentario:</h6>
+                        <form action="{{ route('comentario.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            <div class="mb-2">
+                                <input type="text" name="autor" class="form-control form-control-sm bg-secondary-subtle" placeholder="Tu nombre"   required>
+                            </div>
+                            <div class="mb-2">
+                                <textarea name="contenido" class="form-control form-control-sm bg-secondary-subtle" rows="2" placeholder="Escribeaquí  tu comentario..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-sm mb-2 bg-dark border-white">Enviar comentario</button>
+                        </form>
+                    </div>
+                    <article class="card mb-4 shadow-sm bg-secondary">
                         @if($post->imagen)
-                            <img src="{{ asset('img/' . $post->imagen) }}" class="card-img-top" style="height: 360px; width: 60%; margin: 5px auto; border: solid 2px black" alt="{{ $post->titulo }}">
+                            <img src="{{ asset('img/' . $post->imagen) }}" class="card-img-top" style="height: 360px; width: 60%; margin: 5px auto;     border: solid 2px black" alt="{{ $post->titulo }}">
                         @endif
-                        
                         <div class="card-body">
                             <h2 class="card-title h3">{{ $post->titulo }}</h2>
                             <p class="text-muted small">Publicado por {{ $post->autor }} el {{ $post->created_at->format('d/m/Y') }}</p>
-                            
-                            <div class="card-text colorTexto">
+                            <div class="card-text  bg-secondary-subtle text-slate-900 p-3 rounded">
                                 {{ Str::limit($post->contenido, 200) }} </div>
-
                             <hr>
                             
                             <h5 class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>
@@ -59,14 +76,15 @@
                             </ul>
                         </div>
                     </article>
-                @endforeach
-
-                <div class="d-flex justify-content-center">
-                    {{ $posts->links() }}
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
+
+
+    <div class="d-flex justify-content-center mt-4">
+        {{ $posts->links() }}
+    </div>    
 
     @include('partials._footer')
     <script src="{{ asset('js/menu.js') }}?v=1.0.1"></script>
