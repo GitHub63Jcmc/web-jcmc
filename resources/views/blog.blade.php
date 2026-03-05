@@ -54,13 +54,14 @@
                     </div>
                     <article class="card mb-4 shadow-sm bg-secondary">
                         @if($post->imagen)
-                            <img src="{{ asset('img/' . $post->imagen) }}" class="card-img-top" style="height: 360px; width: 60%; margin: 5px auto;     border: solid 2px black" alt="{{ $post->titulo }}">
+                            {{-- <img src="{{ asset('img/' . $post->imagen) }}" class="card-img-top" style="height: 360px; width: 60%; margin: 5px auto;     border: solid 2px black" alt="{{ $post->titulo }}"> --}}
+                            <img src="{{ asset('img/' . $post->imagen) }}" class="card-img-top img-fluid" style="max-height: 600px; width: auto;    display: block; margin: 10px auto; border: solid 2px black" alt="{{ $post->titulo }}">
                         @endif
                         <div class="card-body">
                             <h2 class="card-title h3">{{ $post->titulo }}</h2>
                             <p class="text-muted small">Publicado por {{ $post->autor }} el {{ $post->created_at->format('d/m/Y') }}</p>
                             <div class="card-text  bg-secondary-subtle text-slate-900 p-3 rounded">
-                                {{ Str::limit($post->contenido, 200) }} </div>
+                                {{ nl2br(e($post->contenido)) }} </div>
                             <hr>
                             
                             <h5 class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>

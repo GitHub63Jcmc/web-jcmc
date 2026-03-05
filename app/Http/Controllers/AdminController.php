@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Formacion; // Importamos tu modelo
 use App\Models\Portafolio; // <--- IMPORTANTE: Añadimos el modelo Portafolio
 use App\Models\Modulo;
+use App\Models\Post; // <--- IMPORTANTE: Añadimos el modelo Blog
 
 
 
@@ -127,5 +128,45 @@ class AdminController extends Controller
         ]);
     
         return redirect()->route('dashboard')->with('success', 'Proyecto añadido al portfolio correctamente.');
+    }
+
+    /* --- SECCIÓN DE BLOG (NUEVA) --- */
+
+    public function crearPost()
+    {
+        // Esta es la vista rosa que creamos antes
+        return view('admin.posts-crear');
+    }
+
+    public function guardarPost(Request $request)
+    {
+        // 1. Validación de los campos
+        $request->validate([
+            'titulo'    => 'required|string|max:255',
+            'autor'     => 'required|string|max:100',
+            'contenido' => 'required|string',
+            'imagen'    => 'required|image|mimes:jpeg,png,jpg,webp|max:2048', // Máximo 2MB
+        ]);
+
+        $nombreImagen = null;
+
+        // 2. Gestión de la imagen (Igual que en tu Portfolio)
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            // Usamos time() para que el nombre sea único y no se sobrescriba
+            $nombreImagen = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $nombreImagen);
+        }
+
+        // 3. Crear el registro en la tabla 'posts'
+        \App\Models\Post::create([
+            'titulo'    => $request->titulo,
+            'autor'     => $request->autor,
+            'contenido' => $request->contenido,
+            'imagen'    => $nombreImagen,
+        ]);
+
+        // Redirigimos al blog para ver el resultado con mensaje de éxito
+        return redirect()->route('blog')->with('success', '¡Nuevo artículo publicado con éxito!');
     }
 }

@@ -48,6 +48,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/modulo/crear', [AdminController::class, 'crearModulo'])->name('admin.modulo.crear');
     Route::post('/admin/modulo/guardar', [AdminController::class, 'guardarModulo'])->name('admin.modulo.guardar');
 
+    // Gestión de Blogs
+    Route::get('/admin/blog/crear', [AdminController::class, 'crearPost'])->name('admin.post.crear');
+    Route::post('/admin/blog/guardar', [AdminController::class, 'guardarPost'])->name('admin.post.guardar');
+
     // Perfil de Usuario
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

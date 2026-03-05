@@ -31,6 +31,7 @@
                         <span class="text-3xl mr-3">📚</span>
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white">Módulos</h3>
                     </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">¡Si la Formación contén Módulos añádalos aquí!</p>
                     @if (session('success'))
                         <div class="mb-4 p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800">
                             {{ session('success') }}
@@ -54,6 +55,24 @@
                     @endif
                     <a href="{{ route('admin.portfolio.crear') }}" class="inline-flex items-center px-4 py-2 bg-green-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150">
                         + Añadir Proyecto
+                    </a>
+                </div>
+
+                <div class="bg-gray-300 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 border-l-4 border-pink-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl mr-3">✍️</span>
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-white">Blog</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Escribe nuevos artículos, comparte noticias o tutoriales en tu sección de blog.</p>
+
+                    @if (session('success') && request()->routeIs('dashboard'))
+                        <div class="mb-4 p-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    
+                    <a href="{{ route('admin.post.crear') }}" class="inline-flex items-center px-4 py-2 bg-pink-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-pink-700 focus:bg-pink-700 active:bg-pink-900 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                        + Nuevo Post
                     </a>
                 </div>
 
