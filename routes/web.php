@@ -52,6 +52,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/blog/crear', [AdminController::class, 'crearPost'])->name('admin.post.crear');
     Route::post('/admin/blog/guardar', [AdminController::class, 'guardarPost'])->name('admin.post.guardar');
 
+    // Gestión de edición de Blogs
+    Route::get('/admin/blog/editar/{id}', [AdminController::class, 'editarPost'])->name('admin.post.editar');
+    Route::put('/admin/blog/actualizar/{id}', [AdminController::class, 'actualizarPost'])->name('admin.post.actualizar');
+    Route::delete('/admin/blog/eliminar/{id}', [AdminController::class, 'eliminarPost'])->name('admin.post.eliminar');
+
     // Perfil de Usuario
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

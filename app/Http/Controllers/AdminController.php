@@ -7,8 +7,7 @@ use App\Models\Formacion; // Importamos tu modelo
 use App\Models\Portafolio; // <--- IMPORTANTE: Añadimos el modelo Portafolio
 use App\Models\Modulo;
 use App\Models\Post; // <--- IMPORTANTE: Añadimos el modelo Blog
-
-
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -33,7 +32,6 @@ class AdminController extends Controller
     }
 
     /* --- SECCIÓN DE PORTFOLIO (NUEVA) --- */
-
     public function crearProyecto()
     {
         return view('admin.crear-proyecto');
@@ -131,7 +129,6 @@ class AdminController extends Controller
     }
 
     /* --- SECCIÓN DE BLOG (NUEVA) --- */
-
     public function crearPost()
     {
         // Esta es la vista rosa que creamos antes
@@ -168,5 +165,69 @@ class AdminController extends Controller
 
         // Redirigimos al blog para ver el resultado con mensaje de éxito
         return redirect()->route('blog')->with('success', '¡Nuevo artículo publicado con éxito!');
+    }
+
+    // Eliminar un post desde Administración
+    public function eliminarPost($id)
+    {
+        // 1. Buscar el post por su ID
+        $post = \App\Models\Post::findOrFail($id);
+
+        // 2. Ruta de la imagen
+        $rutaImagen = public_path('img/' . $post->imagen);
+
+        // 3. Si la imagen existe físicamente, la borramos
+        if (File::exists($rutaImagen)) {
+            File::delete($rutaImagen);
+        }
+
+        // 4. Borrar el registro de la base de datos
+        // (Nota: si tienes configurado el borrado en cascada en la DB, 
+        // los comentarios de este post se borrarán solos).
+        $post->delete();
+
+        // 5. Redirigir con mensaje de éxito
+        return redirect()->route('blog')->with('success', 'Post e imagen eliminados correctamente.');
+    }
+
+    // ------------- EDITAR POST (NUEVO) --------------------------------
+    public function editarPost($id)
+    {
+        $post = \App\Models\Post::findOrFail($id);
+        return view('admin.posts-edit', compact('post'));
+    }
+
+    public function actualizarPost(Request $request, $id)
+    {
+        $post = \App\Models\Post::findOrFail($id);
+
+        $request->validate([
+            'titulo'    => 'required|string|max:255',
+            'autor'     => 'required|string|max:100',
+            'contenido' => 'required|string',
+            'imagen'    => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ]);
+
+        // Si subes una imagen nueva, borramos la vieja y guardamos la nueva
+        if ($request->hasFile('imagen')) {
+            // Borrar imagen antigua
+            $rutaVieja = public_path('img/' . $post->imagen);
+            if (File::exists($rutaVieja)) {
+                File::delete($rutaVieja);
+            }
+
+            // Subir la nueva
+            $file = $request->file('imagen');
+            $nombreImagen = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $nombreImagen);
+            $post->imagen = $nombreImagen;
+        }
+
+        $post->titulo = $request->titulo;
+        $post->autor = $request->autor;
+        $post->contenido = $request->contenido;
+        $post->save();
+
+        return redirect()->route('blog')->with('success', 'Post actualizado con éxito.');
     }
 }
