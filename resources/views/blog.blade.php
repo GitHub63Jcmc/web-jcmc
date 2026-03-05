@@ -28,82 +28,108 @@
         </div>
     </div>
 
-    <div class="container my-5">
-    @foreach ($posts as $post)
-        <div class="row mb-5">
-            <div class="col-md-8 offset-md-2 p-3 fondosDatos">
-                @if(session('success'))
-                    <div class="alert alert-success mt-2 small">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                <article class="card mb-4 shadow-sm bg-secondary">
-                    @if($post->imagen)
-                        <img src="{{ asset('img/' . $post->imagen) }}" class="card-img-top img-fluid" style="max-height: 600px; width: auto; display: block; margin: 10px auto; border: solid 2px black" alt="{{ $post->titulo }}">
+    {{-- -----------------El Buscador--------- --}}
+    <div class="container mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{-- El formulario usa el método GET para que la búsqueda salga en la URL --}}
+                <form action="{{ route('blog') }}" method="GET" class="d-flex">
+                    <input type="text" name="buscar" class="form-control bg-secondary-subtle border-dark" 
+                           placeholder="Buscar en el blog..." 
+                           value="{{ $query ?? '' }}">
+                    <button type="submit" class="btn btn-dark ms-2">🔍</button>
+                    
+                    @if($query)
+                        <a href="{{ route('blog') }}" class="btn btn-outline-danger ms-2">Limpiar</a>
                     @endif
-
-                    <div class="card-body">
-                        <h2 class="card-title h3">{{ $post->titulo }}</h2>
+                </form>
                 
-                        {{-- BOTONES DE ADMINISTRACIÓN --}}
-                        @auth
-                            <div class="mb-3 p-2 rounded d-flex gap-2 justify-content-center mx-auto" style="background-color: #5E5B5B; width: fit-content;">
-                                <a href="{{ route('admin.post.editar', $post->id) }}" class="btn btn-sm btn-outline-warning">
-                                    Editar ✏️
-                                </a>
-                            
-                                <form action="{{ route('admin.post.eliminar', $post->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que quieres borrar este post y su imagen?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                                        Borrar 🗑️
-                                    </button>
-                                </form>
-                            </div>
-                        @endauth
-
-                        <p class="text-muted small">Publicado por {{ $post->autor }} el {{ $post->created_at->format('d/m/Y') }}</p>
-                        
-                        <div class="card-text bg-secondary-subtle text-slate-900 p-3 rounded">
-                            {!! nl2br(e($post->contenido)) !!} 
-                        </div>
-
-                        <hr>
-                        
-                        <h5 class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>
-                        <ul class="list-group list-group-flush mb-4">
-                            @forelse ($post->comentarios as $comentario)
-                                <li class="list-group-item bg-light">
-                                    <strong>{{ $comentario->autor }}:</strong> 
-                                    {{ $comentario->contenido }}
-                                </li>
-                            @empty
-                                <li class="list-group-item text-muted">Aún no hay comentarios. ¡Sé el primero!</li>
-                            @endforelse
-                        </ul>
-
-                        {{-- FORMULARIO DE COMENTARIOS (Ahora al final del post) --}}
-                        <div class="card-footer bg-dark text-light pt-3 rounded-2">
-                            <h6>Deja un comentario:</h6>
-                            <form action="{{ route('comentario.store') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                <div class="mb-2">
-                                    <input type="text" name="autor" class="form-control form-control-sm bg-secondary-subtle" placeholder="Tu nombre" required>
-                                </div>
-                                <div class="mb-2">
-                                    <textarea name="contenido" class="form-control form-control-sm bg-secondary-subtle" rows="2" placeholder="Escribe aquí tu comentario..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-dark btn-sm mb-2 bg-dark border-white">Enviar comentario</button>
-                            </form>
-                        </div>
-                    </div>
-                </article>
+                @if($query)
+                    <p class="text-center mt-2 text-muted">
+                        Mostrando resultados para: "<strong>{{ $query }}</strong>"
+                    </p>
+                @endif
             </div>
         </div>
-    @endforeach
-</div>
+    </div>
+
+
+    <div class="container my-5">
+        @foreach ($posts as $post)
+            <div class="row mb-5">
+                <div class="col-md-8 offset-md-2 p-3 fondosDatos">
+                    @if(session('success'))
+                        <div class="alert alert-success mt-2 small">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <article class="card mb-4 shadow-sm bg-secondary">
+                        @if($post->imagen)
+                            <img src="{{ asset('img/' . $post->imagen) }}" class="card-img-top img-fluid" style="max-height: 600px; width: auto; display: block; margin: 10px auto; border: solid 2px black" alt="{{ $post->titulo }}">
+                        @endif
+
+                        <div class="card-body">
+                            <h2 class="card-title h3">{{ $post->titulo }}</h2>
+                        
+                            {{-- BOTONES DE ADMINISTRACIÓN --}}
+                            @auth
+                                <div class="mb-3 p-2 rounded d-flex gap-2 justify-content-center mx-auto" style="background-color: #5E5B5B; width: fit-content;">
+                                    <a href="{{ route('admin.post.editar', $post->id) }}" class="btn btn-sm btn-outline-warning">
+                                        Editar ✏️
+                                    </a>
+                                
+                                    <form action="{{ route('admin.post.eliminar', $post->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que quieres borrar este post y su imagen?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            Borrar 🗑️
+                                        </button>
+                                    </form>
+                                </div>
+                            @endauth
+
+                            <p class="text-muted small">Publicado por {{ $post->autor }} el {{ $post->created_at->format('d/m/Y') }}</p>
+                            
+                            <div class="card-text bg-secondary-subtle text-slate-900 p-3 rounded">
+                                {!! nl2br(e($post->contenido)) !!} 
+                            </div>
+
+                            <hr>
+
+                            <h5 class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>
+                            <ul class="list-group list-group-flush mb-4">
+                                @forelse ($post->comentarios as $comentario)
+                                    <li class="list-group-item bg-light">
+                                        <strong>{{ $comentario->autor }}:</strong> 
+                                        {{ $comentario->contenido }}
+                                    </li>
+                                @empty
+                                    <li class="list-group-item text-muted">Aún no hay comentarios. ¡Sé el primero!</li>
+                                @endforelse
+                            </ul>
+
+                            {{-- FORMULARIO DE COMENTARIOS (Ahora al final del post) --}}
+                            <div class="card-footer bg-dark text-light pt-3 rounded-2">
+                                <h6>Deja un comentario:</h6>
+                                <form action="{{ route('comentario.store') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                    <div class="mb-2">
+                                        <input type="text" name="autor" class="form-control form-control-sm bg-secondary-subtle" placeholder="Tu nombre" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <textarea name="contenido" class="form-control form-control-sm bg-secondary-subtle" rows="2" placeholder="Escribe aquí tu comentario..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark btn-sm mb-2 bg-dark border-white">Enviar comentario</button>
+                                </form>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
 
     <div class="d-flex justify-content-center mt-4">

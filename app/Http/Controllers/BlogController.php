@@ -8,12 +8,22 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request) // Añadimos Request $request aquí
     {
-        // Traemos los posts con sus comentarios, ordenados por los más recientes
-        $posts = Post::with('comentarios')->orderBy('created_at', 'desc')->paginate(1);
-        
-        return view('blog', compact('posts'));
+        // 1. Capturamos lo que viene del formulario de búsqueda
+        $query = $request->get('buscar');
+
+        // 2. Filtramos si existe una búsqueda, si no, trae todos
+        $posts = Post::with('comentarios')
+            ->when($query, function ($q) use ($query) {
+                return $q->where('titulo', 'LIKE', "%{$query}%")
+                         ->orWhere('contenido', 'LIKE', "%{$query}%");
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(1); // Mantengo paginación en 1
+
+        // 3. Pasamos 'posts' y también 'query' a la vista
+        return view('blog', compact('posts', 'query'));
     }
 
     public function storeComentario(Request $request)
