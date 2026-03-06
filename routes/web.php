@@ -56,6 +56,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/blog/editar/{id}', [AdminController::class, 'editarPost'])->name('admin.post.editar');
     Route::put('/admin/blog/actualizar/{id}', [AdminController::class, 'actualizarPost'])->name('admin.post.actualizar');
     Route::delete('/admin/blog/eliminar/{id}', [AdminController::class, 'eliminarPost'])->name('admin.post.eliminar');
+    Route::delete('/admin/comentario/eliminar/{id}', [BlogController::class, 'eliminarComentario'])->name('admin.comentario.eliminar');
+    Route::get('/admin/comentario/editar/{id}', [BlogController::class, 'editarComentario'])->name('admin.comentario.editar');
+    Route::put('/admin/comentario/actualizar/{id}', [BlogController::class, 'actualizarComentario'])->name('admin.comentario.actualizar');
 
     // Perfil de Usuario
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -28,11 +28,10 @@
         </div>
     </div>
 
-    {{-- -----------------El Buscador--------- --}}
+{{-- -----------------El Buscador--------- --}}
     <div class="container mb-4">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                {{-- El formulario usa el método GET para que la búsqueda salga en la URL --}}
                 <form action="{{ route('blog') }}" method="GET" class="d-flex">
                     <input type="text" name="buscar" class="form-control bg-secondary-subtle border-dark" 
                            placeholder="Buscar en el blog..." 
@@ -43,10 +42,13 @@
                         <a href="{{ route('blog') }}" class="btn btn-outline-danger ms-2">Limpiar</a>
                     @endif
                 </form>
-                
-                @if($query)
-                    <p class="text-center mt-2 text-muted">
-                        Mostrando resultados para: "<strong>{{ $query }}</strong>"
+
+                {{-- Prueba esto para asegurar que detecte la búsqueda --}}
+                @if(request()->filled('buscar'))
+                    <p class="text-center mt-3 text-muted border-top pt-2" style="color: whitesmoke!important">
+                        🔍 Se han encontrado <strong>{{ $posts->total() }}</strong> 
+                        {{ $posts->total() == 1 ? 'resultado' : 'resultados' }} 
+                        para: <span class="badge bg-warning text-dark px-3">"{{ request('buscar') }}"</span>
                     </p>
                 @endif
             </div>
@@ -55,7 +57,8 @@
 
 
     <div class="container my-5">
-        @foreach ($posts as $post)
+        {{-- 1. Empezamos el ciclo --}}
+        @forelse ($posts as $post)
             <div class="row mb-5">
                 <div class="col-md-8 offset-md-2 p-3 fondosDatos">
                     @if(session('success'))
@@ -83,7 +86,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-outline-danger">
-                                            Borrar 🗑️
+                                            <span class="text-black">Borrar 🗑️</span>
                                         </button>
                                     </form>
                                 </div>
@@ -99,17 +102,33 @@
 
                             <h5 class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>
                             <ul class="list-group list-group-flush mb-4">
-                                @forelse ($post->comentarios as $comentario)
-                                    <li class="list-group-item bg-light">
-                                        <strong>{{ $comentario->autor }}:</strong> 
-                                        {{ $comentario->contenido }}
+                                @foreach ($post->comentarios as $comentario)
+                                    <li class="list-group-item bg-light d-flex justify-content-between align-items-center rounded-2">
+                                        <div>
+                                            <strong>{{ $comentario->autor }}:</strong> 
+                                            {{ $comentario->contenido }}
+
+                                            {{-- Botón Editar comentario --}}
+                                            <a href="{{ route('admin.comentario.editar', $comentario->id) }}" class="text-warning p-0 " title="Editar comentario">
+                                                ✏️
+                                            </a>
+                                        </div>
+                                    
+                                        {{-- BOTÓN ELIMINAR COMENTARIO (Solo para ti) --}}
+                                        @auth
+                                            <form action="{{ route('admin.comentario.eliminar', $comentario->id) }}" method="POST" onsubmit="return confirm('¿Borrar este comentario?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm text-danger p-0" title="Eliminar comentario">
+                                                    🗑️
+                                                </button>
+                                            </form>
+                                        @endauth
                                     </li>
-                                @empty
-                                    <li class="list-group-item text-muted">Aún no hay comentarios. ¡Sé el primero!</li>
-                                @endforelse
+                                @endforeach
                             </ul>
 
-                            {{-- FORMULARIO DE COMENTARIOS (Ahora al final del post) --}}
+                            {{-- FORMULARIO DE COMENTARIOS --}}
                             <div class="card-footer bg-dark text-light pt-3 rounded-2">
                                 <h6>Deja un comentario:</h6>
                                 <form action="{{ route('comentario.store') }}" method="POST">
@@ -128,12 +147,23 @@
                     </article>
                 </div>
             </div>
-        @endforeach
+
+        {{-- 2. EL BLOQUE MÁGICO: ¿Qué pasa si no hay resultados? --}}
+        @empty
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="alert alert-info text-center shadow-sm">
+                        No se encontraron posts que coincidan con "<strong>{{ $query }}</strong>".
+                    </div>
+                </div>
+            </div>
+        @endforelse {{-- 3. Cerramos el ciclo principal --}}
     </div>
 
 
     <div class="d-flex justify-content-center mt-4">
-        {{ $posts->links() }}
+        {{-- {{ $posts->links() }} --}}
+        {{ $posts->appends(['buscar' => $query])->links() }}
     </div>    
 
     @include('partials._footer')
