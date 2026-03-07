@@ -74,6 +74,16 @@
 
                         <div class="card-body">
                             <h2 class="card-title h3">{{ $post->titulo }}</h2>
+
+                            {{-- PEQUEÑO BADGE DE COMENTARIOS --}}
+                            <div class="mb-3">
+                                <a href="#comentarios-{{ $post->id }}" class="text-decoration-none">
+                                    <span class="badge rounded-pill bg-info text-dark shadow-sm" style="font-size: 0.85rem;">
+                                        💬 {{ $post->comentarios->count() }} 
+                                        {{ $post->comentarios->count() == 1 ? 'comentario' : 'comentarios' }}
+                                    </span>
+                                </a>
+                            </div>
                         
                             {{-- BOTONES DE ADMINISTRACIÓN --}}
                             @auth
@@ -100,7 +110,7 @@
 
                             <hr>
 
-                            <h5 class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>
+                            <h5 id="comentarios-{{ $post->id }}" class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>
                             <ul class="list-group list-group-flush mb-4">
                                 @foreach ($post->comentarios as $comentario)
                                     <li class="list-group-item bg-light d-flex justify-content-between align-items-center rounded-2">

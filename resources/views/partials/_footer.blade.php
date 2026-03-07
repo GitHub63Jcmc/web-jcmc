@@ -16,7 +16,7 @@
         </div>
 
         <nav class="footer-nav">
-            <ul class="d-flex gap-3 list-unstyled mb-0">
+            <ul class="d-flex flex-wrap gap-2 justify-content-center list-unstyled mb-0 mt-3">
                 <li><a href="{{ url('/') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Inicio</a></li>
                 <li><a href="{{ url('/quiensoy') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Quien soy</a></li>
                 <li><a href="{{ url('/blog') }}" class="text-secondary text-decoration-none bg-black px-1 py-1 rounded-2">Blog</a></li>
