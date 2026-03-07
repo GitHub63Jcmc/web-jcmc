@@ -104,7 +104,7 @@
 
                             <p class="text-muted small">Publicado por {{ $post->autor }} el {{ $post->created_at->format('d/m/Y') }}</p>
                             
-                            <div class="card-text bg-secondary-subtle text-slate-900 p-3 rounded">
+                            <div class="card-text bg-secondary-subtle text-slate-900 p-3 rounded text-start">
                                 {!! nl2br(e($post->contenido)) !!} 
                             </div>
 
@@ -112,12 +112,12 @@
 
                             <h5 id="comentarios-{{ $post->id }}" class="mt-4">Comentarios ({{ $post->comentarios->count() }})</h5>
                             <ul class="list-group list-group-flush mb-4">
-                                @foreach ($post->comentarios as $comentario)
-                                    <li class="list-group-item bg-light d-flex justify-content-between align-items-center rounded-2">
+                                @forelse ($post->comentarios as $comentario)
+                                    <li class="list-group-item bg-light d-flex justify-content-between align-items-center rounded-2 mt-1 mb-1">
                                         <div>
                                             <strong>{{ $comentario->autor }}:</strong> 
                                             {{ $comentario->contenido }}
-
+                                        
                                             {{-- Botón Editar comentario --}}
                                             <a href="{{ route('admin.comentario.editar', $comentario->id) }}" class="text-warning p-0 " title="Editar comentario">
                                                 ✏️
@@ -135,7 +135,12 @@
                                             </form>
                                         @endauth
                                     </li>
-                                @endforeach
+                                @empty
+                                    {{-- Mensaje que se muestra si la lista está vacía --}}
+                                    <li class="list-group-item bg-light text-muted rounded-2 mt-1 shadow-sm border-0 italic">
+                                        <i class="bi bi-chat-dots"></i> Aún no hay comentarios. ¡Sé el primero en opinar! 😊
+                                    </li>
+                                @endforelse
                             </ul>
 
                             {{-- FORMULARIO DE COMENTARIOS --}}
