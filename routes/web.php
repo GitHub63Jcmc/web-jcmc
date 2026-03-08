@@ -7,16 +7,16 @@ use App\Http\Controllers\FormacionController;
 use App\Http\Controllers\PortafolioController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\InicioController;
 
 
+// 1. INICIO (Ahora dinámica a través del controlador)
+Route::get('/', [InicioController::class, 'index'])->name('inicio');
+Route::get('/inicio', [InicioController::class, 'index']); // Redirige también al controlador
 
-// 1. INICIO
-Route::get('/', function () { return view('inicio'); })->name('inicio');
-Route::get('/inicio', function () { return view('inicio'); });
-
-// 2. RUTAS ESTÁTICAS (Directas a la vista)
-Route::get('/quiensoy', function () { return view('quiensoy'); })->name('quiensoy');
-Route::get('/contacto', function () { return view('contacto'); })->name('contacto');
+// 2. QUIÉN SOY (Ahora gestionada por el controlador)
+Route::get('/quiensoy', [InicioController::class, 'quienSoy'])->name('quiensoy');
+Route::get('/contacto', function () { return view('contacto'); })->name('contacto'); // Esta se puede quedar así si no lleva datos
 
 // 3. RUTAS DINÁMICAS (Pasan por el Controlador para traer datos de la BD)
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');

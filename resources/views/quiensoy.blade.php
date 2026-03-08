@@ -15,8 +15,24 @@
     <div class="hero-inner">
         <div class="hero-text">
             <h1 class="welcome">WELCOME Who I am</h1>
-            <h6 class="colorTexto">Desarrollador Web en formación con 3 años de experiencia, práctica en el desarrollo de sitios web y aplicaciones a través de proyectos personales y cursos especializados. Habilidad en tecnologías como HTML5, CSS3, JavaScript, y PHP, con conocimientos en WordPress, bases de datos (MySQL) y el uso de frameworks modernos como Bootstrap. Motivado para seguir aprendiendo y aplicando nuevas tecnologías, y con experiencia previa en la gestión de proyectos y atención al detalle, adquirida durante una extensa carrera en estos últimos años.
+            <h4>Pasión por el desarrollo y la arquitectura limpia.</h4>
+            <h6 class="colorTexto">Hola, soy Joao Cabral. Mi viaje en el mundo de la tecnología comenzó hace más de 3 años, movido por una curiosidad insaciable sobre cómo funcionan las cosas en la web. Lo que empezó con simples etiquetas HTML5 y estilos en CSS3, se ha convertido hoy en mi profesión y mi pasión.
             </h6>
+            <h4>Mi Evolución Técnica:</h4>
+            <h6 class="colorTexto">A lo largo de mi trayectoria, he evolucionado desde el diseño de interfaces dinámicas con JavaScript y React, hasta la construcción de sistemas robustos y escalables utilizando PHP y Laravel. Mi enfoque no es solo escribir código que funcione, sino crear soluciones eficientes, seguras y fáciles de mantener.
+            </h6>
+            <h4>¿Cómo trabajo?</h4>
+            <h6 class="colorTexto">Me especializo en el ecosistema Full Stack, lo que me permite entender el ciclo completo de una aplicación: desde la experiencia de usuario en el frontend hasta el diseño inteligente de bases de datos en MySQL.
+            </h6>
+            <ul>
+                <li class="colorTexto">Lógica y Orden: Soy un firme defensor del código limpio y las buenas prácticas.</li>
+            </ul>
+            <ul>
+                <li class="colorTexto">Aprendizaje Constante: El sector cambia cada día, y yo evoluciono con él (actualmente enfocado en las últimas versiones de Laravel).</li>
+            </ul>
+            <ul>
+                <li class="colorTexto">Compromiso: No solo entrego proyectos, construyo herramientas que aportan valor real.</li>
+            </ul>
         </div>
         <div class="hero-image m-1">
             <picture>
