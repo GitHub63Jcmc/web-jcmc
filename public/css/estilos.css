@@ -196,6 +196,23 @@ table.fondosDatos td {
     }
 }
 
+/* Efecto para los iconos de tecnologías */
+.devicon-html5-plain-wordmark, [class^="devicon-"] {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.devicon-html5-plain-wordmark:hover, [class^="devicon-"]:hover {
+    transform: scale(1.2); /* Se hacen un poco más grandes al pasar el ratón */
+}
+
+/* En móvil, les damos un poco más de aire */
+@media (max-width: 768px) {
+    .gap-4 {
+        gap: 1.5rem !important;
+    }
+}
+
 
 /* 5. FOOTER */
 footer.elBody {
