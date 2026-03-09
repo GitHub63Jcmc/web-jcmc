@@ -14,7 +14,7 @@
     <div class="container-fluid m-auto hero mb-5">
         <div class="hero-inner">
             <div class="hero-text">
-                <h1 class="welcome">WELCOME PORTAFOLIO</h1>
+                <h1 class="welcome">WELCOME PORTFOLIO</h1>
                 <p class="colorTexto tamano-texto">Mi nombre es <span class="miNombre">Joao Cabral de Matos Carvalho</span>, <span class="miNombre">"jcmc"</span> soy un informático freelance emprendedor y amante de la tecnología.</p>
                 <p class="colorTexto tamano-texto">Desde 2010, he trabajado en grandes empresas del sector como  <span class="miNombre">jcmc</span>. Ocupando mis 3 últimos años, antes de establecerme como freelance, como Arquitecto de Software del área de Logística-Comercial de <span class="miNombre">jcmc</span>.</p>
                 <p class="colorTexto tamano-texto">En 2014 decido crear mi propia empresa de desarrollo de software, <span class="miNombre">jcmc</span>, dado mi profundo interés por las nuevas tendencias del sector. Finalmente, en 2015, dejo mi empleo y paso a dedicarme por completo a <span class="miNombre">jcmc</span>, orientando mi carrera al desarrollo de aplicaciones móviles.</p>
