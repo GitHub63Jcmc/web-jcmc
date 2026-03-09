@@ -15,7 +15,12 @@
         <div class="hero-inner">
             <div class="hero-text">
                 <h1 class="welcome">WELCOME MY BLOG</h1>
-                {{-- <h6 class="colorTexto">Desarrollador Web en formación con 3 años de experiencia, práctica en el desarrollo de sitios web y aplicaciones a través de proyectos personales y cursos especializados. Habilidad en tecnologías como HTML5, CSS3, JavaScript, y PHP, con conocimientos en WordPress, bases de datos (MySQL) y el uso de frameworks modernos como Bootstrap. Motivado para seguir aprendiendo y aplicando nuevas tecnologías, y con experiencia previa en la gestión de proyectos y atención al detalle, adquirida durante una extensa carrera en estos últimos años. --}}
+                <h6 class="welcome text-success display-4 fw-bold">BITÁCORA DE DESARROLLO</h6>
+                <h6 class="colorTexto">
+                    desarrollador y diseñador web front-end con sede en Madrid, España. He estado creando cosas en la web durante los últimos 5 años. Me gusta escribir sobre desarrollo y diseño web en mi blog. Mi objetivo es crear interfaces atractivas, accesibles y de alto rendimiento para los humanos.
+                </h6>
+                <h6 class="colorTexto">
+                     Mi objetivo es crear interfaces atractivas, accesibles y de alto rendimiento para los humanos.
                 </h6>
             </div>
             <div class="hero-image m-1">

@@ -11,15 +11,22 @@
 <body class="d-flex flex-column min-vh-100">
     @include('partials._header')
 
-    <div class="container-fluid m-auto hero mb-5">
+    <div class="container-fluid m-auto hero mb-1">
         <div class="hero-inner">
             <div class="hero-text">
-                <h1 class="welcome">WELCOME PORTFOLIO</h1>
-                <p class="colorTexto tamano-texto">Mi nombre es <span class="miNombre">Joao Cabral de Matos Carvalho</span>, <span class="miNombre">"jcmc"</span> soy un informático freelance emprendedor y amante de la tecnología.</p>
-                <p class="colorTexto tamano-texto">Desde 2010, he trabajado en grandes empresas del sector como  <span class="miNombre">jcmc</span>. Ocupando mis 3 últimos años, antes de establecerme como freelance, como Arquitecto de Software del área de Logística-Comercial de <span class="miNombre">jcmc</span>.</p>
-                <p class="colorTexto tamano-texto">En 2014 decido crear mi propia empresa de desarrollo de software, <span class="miNombre">jcmc</span>, dado mi profundo interés por las nuevas tendencias del sector. Finalmente, en 2015, dejo mi empleo y paso a dedicarme por completo a <span class="miNombre">jcmc</span>, orientando mi carrera al desarrollo de aplicaciones móviles.</p>
-                <p class="colorTexto tamano-texto">Actualmente dirijo <span class="miNombre">jcmc</span>, soy co-fundador de <span class="miNombre">JCMC</span> y asesoro y desarrollo para empresas y startups de diferentes partes del mundo.</p>
-                <p class="colorTexto tamano-texto">Si estás buscando profesionalidad y dedicación, ¡cuenta conmigo!</p>
+                <h1 class="welcome text-success">WELCOME PORTFOLIO</h1>
+                <p class="colorTexto tamano-texto lead">
+                    Soy <strong>Joao (jcmc)</strong>, desarrollador Full Stack especializado en el ecosistema PHP y JavaScript.
+                </p>            
+                <p class="colorTexto tamano-texto">
+                    Mi historia con la tecnología comenzó hace más de <strong>30 años</strong>, cuando el CSS apenas estaba naciendo. Tras un paréntesis de dos décadas, la pandemia fue el motor para retomar mi pasión y profesionalizarme en las tecnologías actuales.
+                </p>        
+                <p class="colorTexto tamano-texto">
+                    Llevo los últimos años creando y desplegando aplicaciones web, formándome de manera constante en las últimas tendencias del mercado (SEPE, Udemy). Creo firmemente en el <strong>aprendizaje continuo</strong> y en la atención al detalle.
+                </p>
+                <p class="colorTexto tamano-texto fw-bold">
+                    Si buscas profesionalidad y una mentalidad resiliente, ¡cuenta conmigo!
+                </p>
             </div>
             <div class="hero-image m-1">
                 <picture>

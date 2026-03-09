@@ -41,7 +41,7 @@
 
             <div class="col-lg-5">
                 <div class="row g-4 align-items-center">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card bg-dark border-secondary overflow-hidden shadow-lg rounded-4 position-relative">
                             <img src="{{ asset('img/PapaGafas.jpg') }}" class="card-img-top img-fluid" alt="Joao Cabral" style="object-fit: cover; aspect-ratio: 1/1;">
                             <div class="position-absolute top-0 end-0 m-2">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div class="card bg-dark text-white border-secondary shadow-lg rounded-3">
                             <div class="card-body p-3">
                                 <h6 class="card-title border-bottom border-secondary pb-2 mb-3 text-white" style="font-size: 0.9rem;">Contact Profile Card</h6>
