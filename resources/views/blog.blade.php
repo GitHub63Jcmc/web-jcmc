@@ -15,8 +15,6 @@
         <div class="hero-inner">
             <div class="hero-text">
                 <h1 class="welcome">WELCOME MY BLOG</h1>
-                <h1 class="welcome">WELCOME MY BLOG</h1>
-                <h1 class="welcome">WELCOME MY BLOG</h1>
                 <h6 class="welcome text-success display-4 fw-bold">BITÁCORA DE DESARROLLO</h6>
                 <h6 class="colorTexto">
                     desarrollador y diseñador web front-end con sede en Madrid, España. He estado creando cosas en la web durante los últimos 5 años. Me gusta escribir sobre desarrollo y diseño web en mi blog. Mi objetivo es crear interfaces atractivas, accesibles y de alto rendimiento para los humanos.
